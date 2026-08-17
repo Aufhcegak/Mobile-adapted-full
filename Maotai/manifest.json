@@ -1,0 +1,11 @@
+{
+  "Name": "[CP] 茅台 Maotai",
+  "Author": "Claude",
+  "Version": "1.0.0",
+  "Description": "酿造茅台:上古水果+任意蛋合成茅台酿曲,丢进小桶10000分钟出茅台,可入木桶陈酿,售价2700g(杨桃果酒1.2倍)。100%数据驱动,完全适配原版。",
+  "UniqueID": "Claude.Maotai",
+  "UpdateKeys": [],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  }
+}

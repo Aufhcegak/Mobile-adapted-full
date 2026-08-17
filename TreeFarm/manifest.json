@@ -1,0 +1,10 @@
+{
+  "Name": "TreeFarm 林场",
+  "Author": "xiepe",
+  "Version": "0.3.3",
+  "Description": "林场：罗宾建造的大型林业基地。大堂中枢电脑管理 5 个树种林区：自动种植/砍伐，树龄收益曲线（青年巅峰），原版树脂产物掉落，道具辅助。",
+  "UniqueID": "xiepe.TreeFarm",
+  "EntryDll": "TreeFarm.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}

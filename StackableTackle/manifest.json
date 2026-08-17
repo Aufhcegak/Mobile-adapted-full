@@ -1,0 +1,10 @@
+{
+  "Name": "Stackable Tackle",
+  "Author": "Aufhcegak",
+  "Version": "1.0.1",
+  "Description": "满耐久鱼饵/钓具可堆叠至999，商店支持 shift=5 / ctrl+shift=25 批量购买。耐久用过的钓具保持单件。",
+  "UniqueID": "Aufhcegak.StackableTackle",
+  "EntryDll": "StackableTackle.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}

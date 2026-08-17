@@ -1,0 +1,10 @@
+{
+  "Name": "Garbage Recycler",
+  "Author": "Claude",
+  "Version": "1.4.4",
+  "Description": "新增两种垃圾回收机：水上垃圾回收机像蟹笼一样放在水域自动打捞垃圾（带水域总览地图 UI），陆地垃圾回收机烧煤/木头把垃圾回收成资源。",
+  "UniqueID": "Claude.GarbageRecycler",
+  "EntryDll": "GarbageRecycler.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}

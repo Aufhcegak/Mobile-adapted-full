@@ -1,0 +1,10 @@
+{
+  "Name": "Phone Gift",
+  "Author": "Claude",
+  "Version": "1.1.0",
+  "Description": "打电话送礼:点按(或右键)电话打开好感度界面,离线也能给任何村民送礼。配方(采集6级)需要铱锭5+精炼石英5+木头50+石头50。",
+  "UniqueID": "PhoneGift.PhoneGift",
+  "EntryDll": "PhoneGift.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}

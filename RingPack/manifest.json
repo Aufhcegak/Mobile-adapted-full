@@ -1,0 +1,10 @@
+{
+  "Name": "RingPack",
+  "Author": "Xiepe",
+  "Version": "1.0.0",
+  "Description": "戒指包:马龙处 1000g 购买,手持右键打开,只能放戒指,相同戒指可堆叠,不能放置在地上。",
+  "UniqueID": "Xiepe.RingPack",
+  "EntryDll": "RingPack.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}

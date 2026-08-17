@@ -1,0 +1,226 @@
+{
+  "Format": "2.7.0",
+  "Changes": [
+    // ============================================================
+    // 0. Load —— 把贴图注册为资产 Mods/Claude.Maotai/Sprites
+    // ============================================================
+    {
+      "Action": "Load",
+      "Target": "Mods/Claude.Maotai/Sprites",
+      "FromFile": "assets/sprites.png"
+    },
+
+    // ============================================================
+    // A. Data/Objects —— 注册两个物品:茅台原料 + 茅台
+    //    字段名经 ObjectData.cs 反射验证
+    // ============================================================
+    {
+      "Action": "EditData",
+      "Target": "Data/Objects",
+      "Entries": {
+        // ---- 茅台原料:Category=0(无分类,同恐龙蛋 107 的原版写法) ----
+        // 实测修正:原版小桶规则里本 mod 的茅台规则用 RequiredItemId 精确匹配
+        // (见 B 节),且被 MoveEntries 移到 Default_Wine 之前,根本不依赖
+        // category_fruits;若设 -79(水果)反而会让果酱机 Default_Jelly
+        // (价=基础价×2+50=1650g/2天)和烘干机 DriedFruit(价=基础价×7.5+25
+        // ≈6025g/1天)把酿曲误加工成"酿曲果酱/茅台酿曲果干",形成严重刷钱路径,
+        // 故去掉水果分类。另加 seedmaker_banned 防种子机误收(无作物映射,
+        // 本来也只会空转,加上更干净)。
+        "Claude.Maotai_MaotaiMust": {
+          "Name": "Claude.Maotai_MaotaiMust",
+          "DisplayName": "茅台酿曲",
+          "Description": "上古水果的魂,撞上一颗好蛋的胆,再裹一层神秘的红曲。这坨青里透红的玩意儿闻着就让人腿软——它是茅台的命根子,丢进小桶,等着见证奇迹。",
+          "Type": "Basic",
+          "Category": 0,
+          "Price": 800,
+          "Texture": "Mods/Claude.Maotai/Sprites",
+          "SpriteIndex": 1,
+          "Edibility": -300,
+          "ContextTags": [ "color_cyan", "maotai_must_item", "seedmaker_banned" ]
+        },
+        // ---- 茅台:Category=-26(工匠,同果酒),tag照抄果酒348,Buffs 补齐 ----
+        // 实测修正:果酒348/啤酒346/淡啤酒303/蜜蜂酒459 全部带 Tipsy(BuffId 17)
+        // 醉酒减速度 debuff,旧版茅台 Buffs 为 null → 喝茅台没有任何醉酒效果,
+        // 与"同果酒"宣传不符,这里照抄果酒的 Buffs。
+        "Claude.Maotai_Maotai": {
+          "Name": "Claude.Maotai_Maotai",
+          "DisplayName": "茅台",
+          "Description": "开瓶那一刻,整个山谷都安静了。酱香冲天,一口下去从头发丝暖到脚后跟,连祝尼魔都得喊你一声'爷'。这不是酒,是液体黄金,是身份,是你配得上的体面。",
+          "Type": "Basic",
+          "Category": -26,
+          "Price": 2700,
+          "Texture": "Mods/Claude.Maotai/Sprites",
+          "SpriteIndex": 0,
+          "Edibility": 20,
+          "IsDrink": true,
+          "Buffs": [
+            {
+              "Id": "Tipsy",
+              "BuffId": "17",
+              "IconTexture": null,
+              "IconSpriteIndex": 0,
+              "Duration": 0,
+              "IsDebuff": false,
+              "GlowColor": null,
+              "CustomAttributes": null,
+              "CustomFields": null
+            }
+          ],
+          "ContextTags": [ "alcohol_item", "drink_item", "color_white", "use_reverse_name_for_sorting" ]
+        }
+      }
+    },
+
+    // ============================================================
+    // B. Data/Machines —— 给小桶(BC)12加一条茅台规则
+    //    照抄原版果酒 MinutesUntilReady=10000,PriceModifiers Set 2700
+    //    MoveEntries 移到 Default_Wine 之前(原版惯例:精确ItemId规则在通用tag规则前)
+    // ============================================================
+    {
+      "Action": "EditData",
+      "Target": "Data/Machines",
+      "TargetField": [ "(BC)12", "OutputRules" ],
+      "Entries": {
+        "Claude.Maotai_MaotaiRule": {
+          "Id": "Claude.Maotai_MaotaiRule",
+          "Triggers": [
+            {
+              "Id": "Claude.Maotai_MaotaiRule",
+              "Trigger": "ItemPlacedInMachine",
+              "RequiredItemId": "(O)Claude.Maotai_MaotaiMust",
+              "RequiredCount": 1
+            }
+          ],
+          "UseFirstValidOutput": true,
+          "MinutesUntilReady": 10000,
+          "OutputItem": [
+            {
+              "Id": "Claude.Maotai_Maotai",
+              "ItemId": "(O)Claude.Maotai_Maotai",
+              "CopyPrice": false,
+              "PriceModifiers": [
+                { "Modification": "Set", "Amount": 2700 }
+              ]
+            }
+          ]
+        }
+      },
+      "MoveEntries": [
+        { "Id": "Claude.Maotai_MaotaiRule", "BeforeId": "Default_Wine" }
+      ]
+    },
+
+    // ============================================================
+    // B2. Data/Machines —— 给木桶(BC)163加一条茅台陈酿规则
+    //    实测:原版木桶 6 条规则全部是精确 RequiredItemId(348果酒/459蜜蜂酒/
+    //    303淡啤酒/346啤酒/424奶酪/426羊奶酪),不认 wine_item / keg_wine tag
+    //    (1.6.15 无任何原版物品带 keg_wine tag,sv.cs 的 wine_item 只在
+    //    preserve=Wine 的 FLAVORED_ITEM 上自动生成)。所以不加规则,茅台永远
+    //    放不进木桶。这里照抄原版 Wine 规则:OutputMethod=OutputCask,
+    //    CustomData AgingMultiplier=1 → 与果酒完全相同的陈酿曲线。
+    // ============================================================
+    {
+      "Action": "EditData",
+      "Target": "Data/Machines",
+      "TargetField": [ "(BC)163", "OutputRules" ],
+      "Entries": {
+        "Claude.Maotai_MaotaiCaskRule": {
+          "Id": "Claude.Maotai_MaotaiCaskRule",
+          "Triggers": [
+            {
+              "Id": "Claude.Maotai_MaotaiCaskRule",
+              "Trigger": "ItemPlacedInMachine",
+              "RequiredItemId": "(O)Claude.Maotai_Maotai",
+              "RequiredCount": 1
+            }
+          ],
+          "UseFirstValidOutput": false,
+          "MinutesUntilReady": -1,
+          "DaysUntilReady": -1,
+          "InvalidCountMessage": null,
+          "RecalculateOnCollect": false,
+          "OutputItem": [
+            {
+              "CustomData": {
+                "AgingMultiplier": "1"
+              },
+              "OutputMethod": "StardewValley.Objects.Cask, Stardew Valley: OutputCask",
+              "CopyColor": false,
+              "CopyPrice": false,
+              "CopyQuality": false,
+              "PreserveType": null,
+              "PreserveId": null,
+              "IncrementMachineParentSheetIndex": 0,
+              "PriceModifiers": null,
+              "PriceModifierMode": "Stack",
+              "Condition": null,
+              "Id": "Default",
+              "ItemId": null,
+              "RandomItemId": null,
+              "MaxItems": null,
+              "MinStack": -1,
+              "MaxStack": -1,
+              "Quality": -1,
+              "ObjectInternalName": null,
+              "ObjectDisplayName": null,
+              "ObjectColor": null,
+              "ToolUpgradeLevel": -1,
+              "IsRecipe": false,
+              "StackModifiers": null,
+              "StackModifierMode": "Stack",
+              "QualityModifiers": null,
+              "QualityModifierMode": "Stack",
+              "ModData": null,
+              "PerItemCondition": null
+            }
+          ]
+        }
+      }
+    },
+
+    // ============================================================
+    // C. Data/CraftingRecipes —— 茅台原料合成配方
+    //    格式(CraftingRecipe.cs): 原料/Field/产物/大件bool/解锁/显示名
+    //    上古水果(454)×1 + 任意蛋(分类 -5:白/棕/大/鸭/虚空/鸵鸟/金蛋)×1 → 茅台原料×1
+    //    恐龙蛋(107)原版分类是 0 不是 -5(dump_Objects 实锤,Type=Arch),所以 -5
+    //    配方不吃恐龙蛋,需单独配方;两条配方会同时显示在合成菜单
+    //    (CraftingPage.GetRecipesToDisplay 列出全部已学配方),为避免两个同名
+    //    "茅台酿曲"条目并列,恐龙蛋配方用第 6 段显示名区分。
+    // ============================================================
+    {
+      "Action": "EditData",
+      "Target": "Data/CraftingRecipes",
+      "Entries": {
+        "Claude.Maotai_MaotaiMust": "454 1 -5 1/Field/Claude.Maotai_MaotaiMust 1/false/farming 3/",
+        "Claude.Maotai_MaotaiMust_Dino": "454 1 107 1/Field/Claude.Maotai_MaotaiMust 1/false/farming 3/茅台酿曲(恐龙蛋)"
+      }
+    },
+
+    // ============================================================
+    // D. Data/NPCGiftTastes —— 送礼好感(对照原版酒类口味)
+    //    茅台 → Universal_Like:原版酒(348 等)在大多数村民的"喜欢"档,
+    //    Krobus/矮人/小孩等显式口味表不引用 Universal_Like,自然不受影响。
+    //    酿曲 → Universal_Neutral:原料类,送人无感(不讨厌)。
+    //    注:TextOperations 是 CP EditData 的顶层键(与 Entries 平级),
+    //    Target 路径 = ["Entries", 键名],Append 会拼接在原有字符串末尾。
+    // ============================================================
+    {
+      "Action": "EditData",
+      "Target": "Data/NPCGiftTastes",
+      "TextOperations": [
+        {
+          "Operation": "Append",
+          "Target": [ "Entries", "Universal_Like" ],
+          "Value": "(O)Claude.Maotai_Maotai",
+          "Delimiter": " "
+        },
+        {
+          "Operation": "Append",
+          "Target": [ "Entries", "Universal_Neutral" ],
+          "Value": "(O)Claude.Maotai_MaotaiMust",
+          "Delimiter": " "
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "Name": "Genius Watch (小天才电话手表)",
+  "Author": "xiepe",
+  "Version": "1.0.1",
+  "Description": "可制作的小天才电话手表:送给村民后打开地图就能实时看到他的位置,再送一只收回标记。配方采集6级(铱锭2+精炼石英5+铁锭3)。",
+  "UniqueID": "xiepe.GeniusWatch",
+  "EntryDll": "GeniusWatch.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}
