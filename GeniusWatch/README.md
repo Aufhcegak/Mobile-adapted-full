@@ -58,6 +58,6 @@
 
 - 村民在无世界地图数据的自定义地图（Mod 地图）时，标记不显示（与原版玩家标记行为一致）。
 - 游戏运行中 dll 被锁，`dotnet build` 的 AfterBuild 复制会报 MSB3021 —— 退出游戏后重跑。
-- PhoneGift 顺丰速递**不**调用原版 `NPC.receiveGift`（它自己复刻了送礼结算逻辑），
-  所以经快递寄出的手表**不会**触发本 mod 的标记切换（1.0.1 勘误，旧版 README 曾误称会协同）。
+- PhoneGift 顺丰速递**不**调用原版 NPC.receiveGift（它自己复刻了送礼结算逻辑），
+  本 mod 已额外挂 PhoneGift.GiftLogic.SendGift 后置补丁：经快递寄出的手表同样会切换地图标记。
 - 若给小孩（Child）送手表也会打标记（原版小孩收礼路径），地图上会画小孩头像。
