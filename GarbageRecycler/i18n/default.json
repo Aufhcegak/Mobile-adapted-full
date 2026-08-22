@@ -24,7 +24,7 @@
   "ui.water.title": "Water Trash Collector",
   "ui.map.title": "Water Overview",
   "ui.bait": "Bait",
-  "ui.bait.tip": "Insert any bait. One piece is consumed each morning to automatically fish up trash.\nLeft-click backpack bait: 1 · Tap on mobile moves the whole stack · Ctrl/Shift+click: entire stack.\nCurrent bait: {0}",
+  "ui.bait.tip": "Insert any bait. One piece is consumed each morning to automatically fish up trash.\nLeft-click backpack bait: 1 · Drag on mobile moves the whole stack · Ctrl/Shift+click: entire stack.\nCurrent bait: {0}",
   "ui.bait.empty": "None",
   "ui.trash-storage": "Trash Storage",
   "ui.trash.tip": "Collected trash piles up here. Non-bait objects from your backpack are routed here automatically (tools etc. are rejected; the machine stops when it's full).",
