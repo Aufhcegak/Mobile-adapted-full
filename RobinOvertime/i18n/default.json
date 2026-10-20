@@ -1,6 +1,6 @@
 {
-  "overtimeChoice": "{{name}} · {{days}} days left",
-  "overtimePickWhich": "Several buildings are still under construction. Which one should I rush? (2x fee, half the remaining time)",
+  "overtimeChoice": "{{name}} · {{days}} day(s) · {{fee}}g\r\n{{location}} · Tile {{tile}}",
+  "overtimePickWhich": "Choose a construction, then confirm its overtime fee.",
   "overtimeQuestion": "{{buildingName}} isn't finished yet. In a rush? Pay {{fee}}g and I'll work through the night - the remaining time gets halved, or if there's just one day left, it'll be done today.",
   "houseUpgradeQuestion": "Your house is still under construction. In a rush to move in? Pay {{fee}}g and I'll work through the night - the remaining time gets halved, or if there's just one day left, it'll be done today.",
   "houseUpgradeName": "your house",
@@ -10,8 +10,20 @@
   "finishedEarly": "{{buildingName}} is finished! Worth every {{fee}}g.",
   "notEnoughMoney": "You don't have enough money to pay the {{fee}}g overtime fee.",
   "cfg.section": "Robin Overtime Settings",
-  "cfg.robin-click": "Right-click Robin",
-  "cfg.robin-click.tooltip": "Right-clicking Robin first asks whether to pay overtime to halve the remaining build time.",
+  "cfg.robin-click": "Tap Robin for overtime",
+  "cfg.robin-click.tooltip": "Tap Robin with no held item to open the overtime prompt.",
   "cfg.fee-multiplier": "Overtime fee multiplier",
-  "cfg.fee-multiplier.tooltip": "Overtime fee = building / building upgrade / house upgrade cost x this multiplier. Default 2.0."
+  "cfg.fee-multiplier.tooltip": "Overtime fee = building / building upgrade / house upgrade cost x this multiplier. Default 2.0.",
+  "mobile.title": "Robin overtime",
+  "mobile.previous": "Prev",
+  "mobile.next": "Next",
+  "mobile.page": "{{page}} / {{pages}}",
+  "mobile.changed": "The project or fee changed. Please choose again.",
+  "mobile.location.farm": "Farm",
+  "mobile.location.island": "Island farm",
+  "move.confirm": "Place",
+  "move.cancel": "Back",
+  "move.changed": "The building changed. Please select it again.",
+  "move.title": "Move building",
+  "move.native-ok": "Tap the game's own OK button at the bottom right"
 }

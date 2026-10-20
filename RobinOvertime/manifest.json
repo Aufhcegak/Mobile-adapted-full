@@ -1,8 +1,8 @@
 {
   "Name": "Robin Overtime (罗宾加班)",
   "Author": "XiePe",
-  "Version": "1.4.2",
-  "Description": "右键罗宾时询问是否加班补款：付 2 倍建造费，剩余工期减半（剩最后一天则立即完工），农场建筑和房屋升级都适用；点不用了回到原版对话。",
+  "Version": "1.4.3-mobile.2",
+  "Description": "罗宾加班手机触屏版：加班确认、建筑分页，以及建筑搬迁方向键逐格微调、长按连续移动；桌面与原生安卓两套建造菜单接口自适应。",
   "UniqueID": "XiePe.RobinOvertime",
   "EntryDll": "RobinOvertime.dll",
   "MinimumApiVersion": "4.0.0",

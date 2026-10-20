@@ -1,6 +1,6 @@
 {
-  "overtimeChoice": "{{name}} · 剩 {{days}} 天",
-  "overtimePickWhich": "好几栋建筑都还在施工,要赶哪一栋?(付 2 倍费用,工期减半)",
+  "overtimeChoice": "{{name}} · 剩 {{days}} 天 · {{fee}}g\r\n{{location}} · 位置 {{tile}}",
+  "overtimePickWhich": "先选要赶工的建筑，再确认加班费。",
   "overtimeQuestion": "{{buildingName}} 还没建完。赶着用吗?加 {{fee}}g,我连夜赶工,工期减半——只剩最后一天的话,今天就能交工。",
   "houseUpgradeQuestion": "房子还在动工,赶着住吗?加 {{fee}}g,我连夜赶工,工期减半——只剩最后一天的话,今天就能交工。",
   "houseUpgradeName": "咱家的房子",
@@ -10,8 +10,20 @@
   "finishedEarly": "{{buildingName}} 完工了!{{fee}}g 花得值。",
   "notEnoughMoney": "钱不够付 {{fee}}g 的加班费。",
   "cfg.section": "罗宾加班设置",
-  "cfg.robin-click": "右键罗宾补款",
-  "cfg.robin-click.tooltip": "右键罗宾时优先询问是否付加班费减半天数。",
+  "cfg.robin-click": "点按罗宾补款",
+  "cfg.robin-click.tooltip": "空手点按罗宾，打开加班确认页。",
   "cfg.fee-multiplier": "加班费倍数",
-  "cfg.fee-multiplier.tooltip": "加班费 = 建筑/建筑升级/房屋升级的费用 × 该倍数,默认 2.0。"
+  "cfg.fee-multiplier.tooltip": "加班费 = 建筑/建筑升级/房屋升级的费用 × 该倍数,默认 2.0。",
+  "mobile.title": "罗宾加班",
+  "mobile.previous": "上页",
+  "mobile.next": "下页",
+  "mobile.page": "{{page}} / {{pages}}",
+  "mobile.changed": "工程或费用已变化，请重新选择。",
+  "mobile.location.farm": "农场",
+  "mobile.location.island": "姜岛农场",
+  "move.confirm": "确认",
+  "move.cancel": "取消",
+  "move.changed": "建筑状态已变化，请重新选择。",
+  "move.title": "移动建筑",
+  "move.native-ok": "请点右下角的原版确认按钮"
 }
