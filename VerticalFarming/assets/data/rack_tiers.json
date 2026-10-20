@@ -1,0 +1,93 @@
+{
+  "SchemaVersion": 1,
+  "_comment": "立体种植架的层数定义。所有数值都在这里,C# 不写死任何数量。TextureHeight = 64 + LayerSpacing * (Layers - 1),由代码按 LayerSpacing 重算。",
+  "Tiers": [
+    {
+      "Layers": 2,
+      "LayerSpacing": 48,
+      "CraftIngredients": "388 30 390 5 771 10",
+      "_CraftIngredients": "木材30 + 石头5 + 纤维10",
+      "TechnologyId": "xiepe.VerticalFarming.Tech.Rack2",
+      "RecipeId": "xiepe.VerticalFarming.Recipe.Rack2",
+      "ItemId": "(BC)xiepe.VerticalFarming.Rack2",
+      "BackTexture": "xiepe.VerticalFarming/Racks/Rack2_Back",
+      "FrontTexture": "xiepe.VerticalFarming/Racks/Rack2_Front",
+      "WaterOverlayTexture": "xiepe.VerticalFarming/UI/WaterOverlay"
+    },
+    {
+      "Layers": 3,
+      "LayerSpacing": 44,
+      "CraftIngredients": "388 45 335 5 428 2 338 5",
+      "_CraftIngredients": "木材45 + 铁锭5 + 布料2 + 精炼石英5",
+      "TechnologyId": "xiepe.VerticalFarming.Tech.Rack3",
+      "RecipeId": "xiepe.VerticalFarming.Recipe.Rack3",
+      "ItemId": "(BC)xiepe.VerticalFarming.Rack3",
+      "BackTexture": "xiepe.VerticalFarming/Racks/Rack3_Back",
+      "FrontTexture": "xiepe.VerticalFarming/Racks/Rack3_Front",
+      "WaterOverlayTexture": "xiepe.VerticalFarming/UI/WaterOverlay"
+    },
+    {
+      "Layers": 4,
+      "LayerSpacing": 40,
+      "CraftIngredients": "388 60 709 20 335 10 337 2 787 1",
+      "_CraftIngredients": "木材60 + 硬木20 + 铁锭10 + 铱锭2 + 电池组1",
+      "TechnologyId": "xiepe.VerticalFarming.Tech.Rack4",
+      "RecipeId": "xiepe.VerticalFarming.Recipe.Rack4",
+      "ItemId": "(BC)xiepe.VerticalFarming.Rack4",
+      "BackTexture": "xiepe.VerticalFarming/Racks/Rack4_Back",
+      "FrontTexture": "xiepe.VerticalFarming/Racks/Rack4_Front",
+      "WaterOverlayTexture": "xiepe.VerticalFarming/UI/WaterOverlay"
+    },
+    {
+      "Layers": 2,
+      "LayerSpacing": 48,
+      "CraftIngredients": "388 30 390 5 771 10 330 5",
+      "_CraftIngredients": "木材30 + 石头5 + 纤维10 + 黏土5",
+      "TechnologyId": "xiepe.VerticalFarming.Tech.Rack2",
+      "RecipeId": "xiepe.VerticalFarming.Recipe.HydroRack2",
+      "ItemId": "(BC)xiepe.VerticalFarming.HydroRack2",
+      "BackTexture": "xiepe.VerticalFarming/Racks/HydroRack2_Back",
+      "FrontTexture": "xiepe.VerticalFarming/Racks/HydroRack2_Front",
+      "WaterOverlayTexture": "xiepe.VerticalFarming/UI/WaterOverlay",
+      "Kind": "hydroponic",
+      "RecipePrerequisites": [
+        "xiepe.VerticalFarming.Tech.Rack2",
+        "xiepe.VerticalFarming.Tech.Hydroponics"
+      ]
+    },
+    {
+      "Layers": 3,
+      "LayerSpacing": 44,
+      "CraftIngredients": "388 45 335 5 428 2 338 5 330 10",
+      "_CraftIngredients": "木材45 + 铁锭5 + 布料2 + 精炼石英5 + 黏土10",
+      "TechnologyId": "xiepe.VerticalFarming.Tech.Rack3",
+      "RecipeId": "xiepe.VerticalFarming.Recipe.HydroRack3",
+      "ItemId": "(BC)xiepe.VerticalFarming.HydroRack3",
+      "BackTexture": "xiepe.VerticalFarming/Racks/HydroRack3_Back",
+      "FrontTexture": "xiepe.VerticalFarming/Racks/HydroRack3_Front",
+      "WaterOverlayTexture": "xiepe.VerticalFarming/UI/WaterOverlay",
+      "Kind": "hydroponic",
+      "RecipePrerequisites": [
+        "xiepe.VerticalFarming.Tech.Rack3",
+        "xiepe.VerticalFarming.Tech.Hydroponics"
+      ]
+    },
+    {
+      "Layers": 4,
+      "LayerSpacing": 40,
+      "CraftIngredients": "388 60 709 20 335 10 337 2 787 1 330 15",
+      "_CraftIngredients": "木材60 + 硬木20 + 铁锭10 + 铱锭2 + 电池组1 + 黏土15",
+      "TechnologyId": "xiepe.VerticalFarming.Tech.Rack4",
+      "RecipeId": "xiepe.VerticalFarming.Recipe.HydroRack4",
+      "ItemId": "(BC)xiepe.VerticalFarming.HydroRack4",
+      "BackTexture": "xiepe.VerticalFarming/Racks/HydroRack4_Back",
+      "FrontTexture": "xiepe.VerticalFarming/Racks/HydroRack4_Front",
+      "WaterOverlayTexture": "xiepe.VerticalFarming/UI/WaterOverlay",
+      "Kind": "hydroponic",
+      "RecipePrerequisites": [
+        "xiepe.VerticalFarming.Tech.Rack4",
+        "xiepe.VerticalFarming.Tech.Hydroponics"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "Name": "Vertical Farming 立体农业",
+  "Author": "xiepe",
+  "Version": "0.6.6-mobile2",
+  "Description": "和德米特里厄斯试种作物，拿到图纸，在农场搭起多层种植架。",
+  "UniqueID": "xiepe.VerticalFarming",
+  "EntryDll": "VerticalFarming.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}
